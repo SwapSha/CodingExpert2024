@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommunicationService } from '../../shared/services/communication.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterOutlet,CommonModule],
+  imports: [RouterOutlet,CommonModule,RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -24,7 +24,6 @@ export class HeaderComponent {
     //     }
     //   }
     // });
-    console.log("Header : ",this.isHeaderVisible);
   }
   @HostListener('window:scroll', ['$event']) 
   toggleScrolled(event:any) {
