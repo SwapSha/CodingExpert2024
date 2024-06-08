@@ -9,7 +9,7 @@
 /* Global Colors */
 :root {
   /* Background Color - This color is applied to the background of the entire website as well as individual sections. */
-  --background-color: #ffffff;
+  --background-color: #f4f4f4;
 
   /* Default Color - This is the default color used for the majority of the text content. */
   --default-color: #212529;
@@ -54,8 +54,37 @@ body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  overflow-y: hidden;
+}
+/* Scroll Bar Start */
+.scrollbar {
+  height: 950px !important;
+  width: 100%;
+  overflow: auto;
+}
+/*       ScrollBar 1        */
+
+#scrollbar1::-webkit-scrollbar {
+  width: 16px;
 }
 
+#scrollbar1::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: #e7e7e7;
+  border: 1px solid #cacaca;
+}
+
+#scrollbar1::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+border: 3px solid transparent;
+ background-clip: content-box;
+  background-color: #599dd5;
+}
+/* Scroll Bar End */
+
+.modal-header,.modal-body,.modal-footer{
+  background-color: #f4f4f4!important;
+}
 a {
   color: pink !important;
   text-decoration: none !important;

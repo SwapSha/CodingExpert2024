@@ -8,3 +8,7 @@
 .headroom--unpinned {
     transform: translateY(-100%);
 }
+
+a{
+    cursor: pointer;
+}
