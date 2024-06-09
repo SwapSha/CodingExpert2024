@@ -63,7 +63,7 @@
                   <!-- First Name -->
                   <div class="col-md-6">
                     <input type="text" name="firstname" class="form-control" placeholder="First name" formControlName="fname">
-                    <app-errors-messages class="error-message" [control]="contactForm.get('fname')!" ></app-errors-messages>
+                    <app-errors-messages class="error-message" [control]="contactForm.get('fname')!" [validForm]="isFormValid" ></app-errors-messages>
                   </div>
                   <!-- Last Name -->
                   <div class="col-md-6">
@@ -115,27 +115,27 @@
                      <app-errors-messages class="error-message" [control]="contactForm.get('course')!" ></app-errors-messages>
                    </div>
                    <!-- Image -->
-                    <div class="col-md-12">
-                      @if (!imagePreview) {
-                        <div class="col-md-6">
-                          <div>
-                            <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChange($event)">
-                              <div class="text-wrapper">
-                                <div class="centered">
-                                  <h5>Upload image</h5>
-                                  <input type="file" name="file" id="file" (change)="onFileChange($event.target)" multiple>
-                                  <label for="file"><span class="textLink"><i class="bi bi-upload"></i>Select your file</span><br><span class="DroptextLink"> Drop it here!</span></label>
-                                </div>
+                    <div class="col-md-12 row" style="padding-top: 15px;">
+                      <div class="col-md-6" [ngClass]="{'disabledbutton' : imagePreview}">
+                        <div>
+                          <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChange($event)">
+                            <div class="text-wrapper">
+                              <div class="centered">
+                                <h5>Upload image</h5>
+                                <input type="file" name="file" id="file" (change)="onFileChange($event.target)" multiple>
+                                <label for="file"><span class="textLink"><i class="bi bi-upload"></i> &nbsp; Select your file</span><br><span class="DroptextLink"> Drop it here!</span></label>
                               </div>
                             </div>
                           </div>
                         </div>
-                      }@else {
-                        <div class="col-md-6">
-                          <button (click)="clearImage()"><i class="bi bi-x-square-fill"></i></button>
-                          <img [src]="imagePreview" alt="">
+                      </div>
+                      <div class="col-md-6 img-wrapper" [ngClass]="{'hideDiv' : !imagePreview}">
+                        <img [src]="imagePreview" class="img-responsive" alt="" >
+                        <div class="img-overlay">
+                          <!-- <button  class="crossButton"></button> -->
+                          <i class="bi bi-x-circle" (click)="clearImage()"></i>
                         </div>
-                      }
+                      </div>
                     </div>
                     <!-- Description -->
                   <div class="col-md-12">

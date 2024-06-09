@@ -1944,9 +1944,14 @@ section,
   background-color: color-mix(in srgb, var(--background-color), transparent 50%);
   border-color: color-mix(in srgb, var(--default-color), transparent 80%);
 }
-
+.input-group-text{
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%) !important;
+}
 .contact .php-email-form input[type=text]:focus,
 .contact .php-email-form input[type=email]:focus,
+.contact .php-email-form input[type=file]:focus,
+.contact .php-email-form input[type=tel]:focus,
+.contact .php-email-form select:focus,
 .contact .php-email-form textarea:focus {
   border-color: var(--accent-color);
 }

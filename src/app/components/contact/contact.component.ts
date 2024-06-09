@@ -3,12 +3,12 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorsMessagesComponent } from '../../core/errors-messages/errors-messages.component';
-import { read } from 'fs';
+import { SharedModuleModule } from '../../shared/shared-module/shared-module.module';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule,FormsModule,ErrorsMessagesComponent],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule,ErrorsMessagesComponent,SharedModuleModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -48,13 +48,31 @@ export class ContactComponent {
       this.isFormValid = true;
       return;
     }
+    let payload = {
+      fname: this.contactForm.value.fname,
+      lname: this.contactForm.value.lname,
+      address: this.contactForm.value.address,
+      permanentAddress: this.contactForm.value.permanentAddress,
+      contact1: this.contactForm.value.contact1,
+      contact2: this.contactForm.value.contact2,
+      email: this.contactForm.value.email,
+      course: this.contactForm.value.course,
+      profilePic: this.imagePreview,
+      description: this.contactForm.value.description
+    }
+    console.log(payload);
+    this.contactForm.reset();    
   }
   onFileChange(event:any){
-    let file= event.files[0];
+    let file:any
+    console.log("event : ",event);
+    if(event.files[0]) file= event.files[0];
+    else file= event[0];
+    console.log("file : ",file);
     let reader = new FileReader();
     reader.readAsDataURL(file);
-    console.log(file);
     reader.onloadend  =  (event) => {
+      console.log(file," && reader result : ",reader.result);
       this.imagePreview = reader.result;
     }
   }

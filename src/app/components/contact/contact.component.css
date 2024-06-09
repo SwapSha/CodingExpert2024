@@ -53,8 +53,36 @@ input[type="file"] {
     margin-bottom: 0px !important;
     font-weight: 600;
 }
-img {
-    width: 100%; /* or any custom size */
-    height: 100%; 
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+.hideDiv{
+    display: none;
+}
+
+.bi-x-circle {
+    color: black;
+    background: transparent;
+    font-size: 22px;
+}
+
+.img-wrapper {
+    position: relative;
+}
+  
+.img-responsive {
+    width: 100%;
+    height: auto;
     object-fit: contain;
+}
+  
+.img-overlay {
+    position: absolute;
+    top: 3px;
+    bottom: 0;
+    left: 0;
+    right: 14px;
+    text-align: end;
 }

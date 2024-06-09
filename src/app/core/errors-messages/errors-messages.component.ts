@@ -13,12 +13,12 @@ import { log } from 'console';
 })
 export class ErrorsMessagesComponent {
     @Input() control!: AbstractControl
+    @Input() validForm : boolean = false;
 
     get errorMessage() {
       for (const validatorName in this.control?.errors) {
-          if(this.control.touched){
+          if(this.control.touched || this.validForm){
             let res = getValidatorErrorMessage(validatorName, this.control.errors[validatorName]);
-            console.log(res);
             return res;
           }
       }
