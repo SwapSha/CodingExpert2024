@@ -58,31 +58,97 @@
             </div>
   
             <div class="col-lg-6">
-              <form class="php-email-form">
+              <form class="php-email-form" [formGroup]="contactForm">
                 <div class="row gy-4">
-  
+                  <!-- First Name -->
                   <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
+                    <input type="text" name="firstname" class="form-control" placeholder="First name" formControlName="fname">
+                    <app-errors-messages class="error-message" [control]="contactForm.get('fname')!" ></app-errors-messages>
                   </div>
-  
+                  <!-- Last Name -->
+                  <div class="col-md-6">
+                    <input type="text" name="lastname" class="form-control" placeholder="Last name" formControlName="lname">
+                    <app-errors-messages class="error-message" [control]="contactForm.get('lname')!" ></app-errors-messages>
+                  </div>
+                  <!-- Address -->  
                   <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
+                    <input type="text" class="form-control" name="address" placeholder="Address" required="" formControlName="address">
+                    <app-errors-messages class="error-message" [control]="contactForm.get('address')!" ></app-errors-messages>
                   </div>
-  
-                  <div class="col-md-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
+                  <!-- Permanent Address -->
+                  <div class="col-md-6 ">
+                    <input type="text" class="form-control" name="permanentAddress" placeholder="Permanent Address" required="" formControlName="permanentAddress">
+                    <app-errors-messages class="error-message" [control]="contactForm.get('permanentAddress')!" ></app-errors-messages>
                   </div>
-  
+                  <!-- Phone -->
+                  <div class="col-md-6 ">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                      </div>
+                      <input type="tel" class="form-control" name="contact1" placeholder="Your phone number" required="" formControlName="contact1">
+                      <app-errors-messages class="error-messageTel" [control]="contactForm.get('contact1')!" ></app-errors-messages>
+                    </div>
+                  </div>
+                  <!-- Mobile -->
+                  <div class="col-md-6 ">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">+91</span>
+                      </div>
+                    <input type="tel" class="form-control" name="contact2" placeholder="Your mobile number" required="" formControlName="contact2">
+                    <app-errors-messages class="error-messageTel" [control]="contactForm.get('contact2')!" ></app-errors-messages>
+                    </div>
+                  </div>
+                  <!-- email -->  
+                  <div class="col-md-6">
+                    <input type="email" class="form-control" name="email" placeholder="Your email id" required="" formControlName="email">
+                    <app-errors-messages class="error-message" [control]="contactForm.get('email')!" ></app-errors-messages>
+                  </div>
+                  <!-- Course -->
+                   <div class="col-md-6">
+                     <select name="course" formControlName="course" class="form-select" >
+                      <option value="" selected hidden>Course</option>
+                      <option [value]="course.value" *ngFor="let course of courseList">{{course.courseName}}</option>
+                      <!-- <option value="node">Node</option> -->
+                     </select>
+                     <app-errors-messages class="error-message" [control]="contactForm.get('course')!" ></app-errors-messages>
+                   </div>
+                   <!-- Image -->
+                    <div class="col-md-12">
+                      @if (!imagePreview) {
+                        <div class="col-md-6">
+                          <div>
+                            <div class="dropzone" fileDragDrop (filesChangeEmiter)="onFileChange($event)">
+                              <div class="text-wrapper">
+                                <div class="centered">
+                                  <h5>Upload image</h5>
+                                  <input type="file" name="file" id="file" (change)="onFileChange($event.target)" multiple>
+                                  <label for="file"><span class="textLink"><i class="bi bi-upload"></i>Select your file</span><br><span class="DroptextLink"> Drop it here!</span></label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      }@else {
+                        <div class="col-md-6">
+                          <button (click)="clearImage()"><i class="bi bi-x-square-fill"></i></button>
+                          <img [src]="imagePreview" alt="">
+                        </div>
+                      }
+                    </div>
+                    <!-- Description -->
                   <div class="col-md-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
+                    <textarea class="form-control" name="description" rows="6" placeholder="Message" required="" formControlName="description"></textarea>
+                    <app-errors-messages class="error-message" [control]="contactForm.get('description')!" ></app-errors-messages>
                   </div>
   
                   <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
+                    <!-- <div class="loading">Loading</div> -->
+                    <!-- <div class="error-message"></div> -->
+                    <!-- <div class="sent-message">Your message has been sent. Thank you!</div> -->
   
-                    <button type="submit">Send Message</button>
+                    <button type="submit" (click)="submitForm()">Send Message</button>
                   </div>
   
                 </div>

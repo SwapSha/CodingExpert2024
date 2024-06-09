@@ -1891,11 +1891,11 @@ section,
 }
 
 .contact .php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
+  /* display: none; */
+  background: transparent;
+  color: #df1529;
   text-align: left;
-  padding: 15px;
+  padding-top: 15px;
   margin-bottom: 24px;
   font-weight: 600;
 }
@@ -1932,6 +1932,9 @@ section,
 
 .contact .php-email-form input[type=text],
 .contact .php-email-form input[type=email],
+.contact .php-email-form input[type=file],
+.contact .php-email-form input[type=tel],
+.contact .php-email-form select,
 .contact .php-email-form textarea {
   font-size: 14px;
   padding: 10px 15px;
