@@ -9,8 +9,8 @@ export class FileDragNDropDirective {
   @Output() private filesChangeEmiter : EventEmitter<File[]> = new EventEmitter();
   //@Output() private filesInvalidEmiter : EventEmitter<File[]> = new EventEmitter();
   @HostBinding('style.background') private background = '#eee';
-  @HostBinding('style.border') private borderStyle = '2px dashed';
-  @HostBinding('style.border-color') private borderColor = '#696D7D';
+  @HostBinding('style.border') private borderStyle = '1px dashed';
+  @HostBinding('style.border-color') private borderColor = '#2c2ce4;';
   @HostBinding('style.border-radius') private borderRadius = '5px';
 
   constructor() { }
@@ -20,7 +20,7 @@ export class FileDragNDropDirective {
     evt.stopPropagation();
     this.background = 'lightgray';
     this.borderColor = 'cadetblue';
-    this.borderStyle = '3px solid';
+    this.borderStyle = '1px solid';
   }
 
   @HostListener('dragleave', ['$event']) public onDragLeave(evt:any){
@@ -28,7 +28,7 @@ export class FileDragNDropDirective {
     evt.stopPropagation();
     this.background = '#eee';
     this.borderColor = '#696D7D';
-    this.borderStyle = '2px dashed';
+    this.borderStyle = '1px dashed';
   }
 
   @HostListener('drop', ['$event']) public onDrop(evt:any){
@@ -36,9 +36,8 @@ export class FileDragNDropDirective {
     evt.stopPropagation();
     this.background = '#eee';
     this.borderColor = '#696D7D';
-    this.borderStyle = '2px dashed';
-    // debugger;
-    let files = evt.dataTransfer.files;
+    this.borderStyle = '1px dashed';
+    let files = evt.dataTransfer;
     let valid_files : Array<File> = files;
     this.filesChangeEmiter.emit(valid_files);
   }
