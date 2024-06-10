@@ -7,6 +7,7 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { PricingComponent } from './components/pricing/pricing.component';
 import { TeamComponent } from './components/team/team.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
     {path:'',component:MainComponent,pathMatch:'full',title:'Coding Expert'},
@@ -16,5 +17,6 @@ export const routes: Routes = [
     {path:'pricing',component:PricingComponent,title:'Coding Expert'},
     {path:'team',component:TeamComponent,title:'Coding Expert'},
     {path:'contact',component:ContactComponent,title:'Coding Expert'},
+    {path:'login',component:LoginComponent,title:'Coding Expert'},
     {path:'**',component:ErrorComponent,title:'Coding Expert'},
 ];
